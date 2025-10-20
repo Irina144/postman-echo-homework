@@ -3,11 +3,13 @@ import static org.hamcrest.Matchers.*;
 import org.junit.jupiter.api.Test;
 
 public class PostmanEchoTest {
+
     @Test
     void shouldReturnSentTextInDataField() {
         String payload = "some data";
 
-        useRelaxedHTTPSValidation(); 
+      
+        useRelaxedHTTPSValidation();
 
         given()
                 .baseUri("https://postman-echo.com")
