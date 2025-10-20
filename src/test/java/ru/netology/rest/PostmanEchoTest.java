@@ -23,6 +23,6 @@ public class PostmanEchoTest {
                 .then()
                 .statusCode(200)
 
-                .body("data", equalTo(payload));
+                .body("dataX", equalTo(payload));
     }
 }
