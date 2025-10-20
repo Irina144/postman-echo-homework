@@ -1,4 +1,4 @@
-image: Ubuntu2204
+image: Ubuntu2004
 stack: jdk 11
 
 branches:
@@ -7,27 +7,12 @@ branches:
 
 build: off
 
-environment:
-  JAVA_TOOL_OPTIONS: -Dfile.encoding=UTF-8
-  GRADLE_OPTS: -Dorg.gradle.jvmargs="-Dfile.encoding=UTF-8"
-
 install:
-
-  - sudo apt-get update -y
-  - sudo apt-get install -y ca-certificates ca-certificates-java curl
-  - sudo update-ca-certificates -f
-  - sudo /var/lib/dpkg/info/ca-certificates-java.postinst configure
-
-
-  - curl -I https://repo.maven.apache.org/maven2/ || true
-
-
   - chmod +x gradlew
-  - ./gradlew --version
 
 build_script:
-
-  - ./gradlew test --no-daemon --refresh-dependencies --stacktrace --info || (
+ 
+  - ./gradlew test --no-daemon --stacktrace --info || (
     echo "Retry in 5s due to network hiccup" && sleep 5 &&
-    ./gradlew test --no-daemon --refresh-dependencies --stacktrace --info
+    ./gradlew test --no-daemon --stacktrace --info
     )

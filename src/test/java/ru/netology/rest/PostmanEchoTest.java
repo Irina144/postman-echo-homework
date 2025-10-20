@@ -1,13 +1,15 @@
-import static io.restassured.RestAssured.*;
-import static org.hamcrest.Matchers.*;
+package ru.netology.rest;
+
 import org.junit.jupiter.api.Test;
 
+import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.equalTo;
+
 public class PostmanEchoTest {
+
     @Test
     void shouldReturnSentTextInDataField() {
         String payload = "some data";
-
-        useRelaxedHTTPSValidation(); // важно для CI, чтобы REST Assured не споткнулся об TLS
 
         given()
                 .baseUri("https://postman-echo.com")
