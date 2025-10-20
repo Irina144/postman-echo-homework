@@ -7,7 +7,7 @@ public class PostmanEchoTest {
     void shouldReturnSentTextInDataField() {
         String payload = "some data";
 
-        useRelaxedHTTPSValidation(); // важно для CI
+        useRelaxedHTTPSValidation(); // важно для CI, чтобы REST Assured не споткнулся об TLS
 
         given()
                 .baseUri("https://postman-echo.com")

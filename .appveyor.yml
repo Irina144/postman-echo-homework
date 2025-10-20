@@ -1,21 +1,25 @@
-image: Ubuntu2004
+image: Ubuntu2204
 stack: jdk 11
 
 branches:
   only:
-    - main   # если ветка называется master — поставь master
+    - main
 
 build: off
 
 environment:
   JAVA_TOOL_OPTIONS: -Dfile.encoding=UTF-8
+  GRADLE_OPTS: -Dorg.gradle.jvmargs="-Dfile.encoding=UTF-8"
 
 install:
 
   - sudo apt-get update -y
-  - sudo apt-get install -y ca-certificates ca-certificates-java
+  - sudo apt-get install -y ca-certificates ca-certificates-java curl
   - sudo update-ca-certificates -f
   - sudo /var/lib/dpkg/info/ca-certificates-java.postinst configure
+
+
+  - curl -I https://repo.maven.apache.org/maven2/ || true
 
 
   - chmod +x gradlew
