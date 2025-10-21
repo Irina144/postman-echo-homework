@@ -11,7 +11,7 @@ install:
   - chmod +x gradlew
 
 build_script:
- 
+
   - ./gradlew test --no-daemon --stacktrace --info || (
     echo "Retry in 5s due to network hiccup" && sleep 5 &&
     ./gradlew test --no-daemon --stacktrace --info
